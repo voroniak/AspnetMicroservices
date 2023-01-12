@@ -40,3 +40,5 @@ namespace Discount.API.Controllers
         {
             return Ok(await _repository.UpdateDiscount(coupon));
         }
+    }
+}
