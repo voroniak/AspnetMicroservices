@@ -1,7 +1,7 @@
 using Basket.API.GrpcServices;
 using Basket.API.Repositories;
 using Basket.API.Repositories.Interfaces;
-//using Discount.Grpc.Protos;
+using Discount.Grpc.Protos;
 using HealthChecks.UI.Client;
 using MassTransit;
 using Microsoft.AspNetCore.Builder;
@@ -44,9 +44,9 @@ namespace Basket.API
             services.AddAutoMapper(typeof(Startup));
 
             //// Grpc Configuration
-            //services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>
-            //            (o => o.Address = new Uri(Configuration["GrpcSettings:DiscountUrl"]));
-            //services.AddScoped<DiscountGrpcService>();
+            services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>
+                        (o => o.Address = new Uri(Configuration["GrpcSettings:DiscountUrl"]));
+            services.AddScoped<DiscountGrpcService>();
 
             //// MassTransit-RabbitMQ Configuration
             //services.AddMassTransit(config => {
